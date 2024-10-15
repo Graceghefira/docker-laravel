@@ -2197,11 +2197,11 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: process.env.MIX_PUSHER_APP_KEY,
   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-  wsHost: window.location.hostname,
+  wsHost: '103.196.153.144',
   // Gunakan alamat IP server
   wsPort: 6001,
   wssPort: 6001,
-  forceTLS: false,
+  forceTLS: true,
   disableStats: true,
   enabledTransports: ['ws', 'wss']
 });

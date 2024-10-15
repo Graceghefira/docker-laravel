@@ -24,10 +24,10 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    wsHost: window.location.hostname,  // Gunakan alamat IP server
+    wsHost: '103.196.153.144',  // Gunakan alamat IP server
     wsPort: 6001,
     wssPort: 6001,
-    forceTLS: false,
+    forceTLS: true,
     disableStats: true,
     enabledTransports: ['ws', 'wss'],
 });
