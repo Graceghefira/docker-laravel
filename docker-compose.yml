@@ -20,6 +20,25 @@ services:
             - database
             - redis
 
+    # PHP Service
+    websocket:
+        build:
+            context: .
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
+        environment:
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=websocket
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        ports:
+            - 6001:6001
+        depends_on:
+            - database
+            - redis
+
     # Database Server
     database:
         image: mysql:5.7
@@ -30,6 +49,10 @@ services:
             - MYSQL_USER=${DB_USERNAME}
             - MYSQL_PASSWORD=${DB_PASSWORD}
             - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        networks:
+          default:
+            aliases:
+              - database
         volumes:
             - db-data:/var/lib/mysql
 
@@ -39,5 +62,31 @@ services:
         command: redis-server --appendonly yes --requirepass  "${REDIS_PASSWORD}"
         ports:
             - 6380:6379
+
+    # Queue Server
+    queue:
+        build:
+            context: .
+            target: php
+            args:
+                - APP_ENV=${APP_ENV}
+        environment:
+            - APP_ENV=${APP_ENV}
+            - CONTAINER_ROLE=queue
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+
+
+    # Node Server
+    node:
+        build:
+            context: .
+            target: node
+        volumes:
+            - .:/usr/src
+            - ./node_modules:/usr/src/node_modules
+        tty: true
+
 volumes:
     db-data: ~
