@@ -27,5 +27,5 @@ RUN npm install --global cross-env
 RUN npm install
 
 VOLUME /var/www/node_modules
-EXPOSE 9000
+EXPOSE 8000 9000
 CMD ["php-fpm"]

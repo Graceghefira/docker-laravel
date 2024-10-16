@@ -11,6 +11,11 @@ server {
 server {
     listen 443 ssl;
     server_name 103.196.153.144;
+    root /usr/share/nginx/html/frontend-netpro/dist/netpro/browser;
+    ssl_certificate /etc/letsencrypt/live/sysnet.awh.co.id/fullchain.pem; 
+    ssl_certificate_key /etc/letsencrypt/live/sysnet.awh.co.id/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
 
    # Root ke aplikasi Laravel
     location / {
@@ -35,15 +40,10 @@ server {
     location ~ \.php$ {
     try_files $uri =404; 
     fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    fastcgi_pass app:9000; 
+    fastcgi_pass app:9000;  # Mengarahkan ke service PHP dalam Docker
     fastcgi_index index.php;
-    include fastcgi_params;  
+    include fastcgi_params;  # Pastikan ini sudah benar
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_param PATH_INFO $fastcgi_path_info;
-    }
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-        gzip_static on;
     }
 }
