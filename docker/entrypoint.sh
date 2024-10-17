@@ -19,9 +19,9 @@ if [ "$role" = "app" ]; then
     php artisan cache:clear
     php artisan config:clear
     php artisan route:clear
-    exec php-fpm
     exec docker-php-entrypoint "$@"
 
+  
 elif [ "$role" = "queue" ]; then
     echo "Running the queue ... "
     php /var/www/artisan queue:work --verbose --tries=3 --timeout=180

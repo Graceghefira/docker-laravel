@@ -7,7 +7,7 @@ return [
      */
     'dashboard' => [
         'port' => env('LARAVEL_WEBSOCKETS_EXTERNAL_PORT', 6001),
-        "host" => env("LARAVEL_WEBSOCKETS_EXTERNAL_HOST", "127.0.0.1")
+        "host" => env("LARAVEL_WEBSOCKETS_EXTERNAL_HOST", "103.196.153.144")
     ],
 
     /*
@@ -24,7 +24,7 @@ return [
         [
             'id' => env('PUSHER_APP_ID', "staging"),
             'name' => env('APP_NAME',  "staging"),
-            'host' => env('LARAVEL_WEBSOCKETS_EXTERNAL_HOST',  "127.0.0.1"),
+            'host' => env('LARAVEL_WEBSOCKETS_EXTERNAL_HOST',  "103.196.153.144"),
             'port' => env('LARAVEL_WEBSOCKETS_EXTERNAL_PORT', 6001),
             'key' => env('PUSHER_APP_KEY', "staging"),
             'secret' => env('PUSHER_APP_SECRET', "staging"),
