@@ -23,7 +23,7 @@ return [
     'apps' => [
         [
             'id' => env('PUSHER_APP_ID', "staging"),
-            'name' => env('APP_NAME',  "staging"),
+            'name' => env('APP_NAME',  "MY_PROJECT"),
             'host' => env('LARAVEL_WEBSOCKETS_EXTERNAL_HOST',  "103.196.153.144"),
             'port' => env('LARAVEL_WEBSOCKETS_EXTERNAL_PORT', 6001),
             'key' => env('PUSHER_APP_KEY', "staging"),

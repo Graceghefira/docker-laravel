@@ -31,11 +31,11 @@ return [
     'connections' => [
         'pusher' => [
             'driver' => 'pusher',
-            'key' => env('PUSHER_APP_KEY'),
-            'secret' => env('PUSHER_APP_SECRET'),
-            'app_id' => env('PUSHER_APP_ID'),
+            'key' => env('PUSHER_APP_KEY', 'staging'),
+            'secret' => env('PUSHER_APP_SECRET', 'staging'),
+            'app_id' => env('PUSHER_APP_ID','staging'),
             'options' => [
-                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'cluster' => env('PUSHER_APP_CLUSTER','mt1'),
                 'host' => env("LARAVEL_WEBSOCKETS_INTERNAL_HOST", '103.196.153.144'),
                 'port' => env('LARAVEL_WEBSOCKETS_INTERNAL_PORT', 6001),
                 'scheme' => 'http',
