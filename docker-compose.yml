@@ -28,7 +28,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
     ports:
       - "80:80"
-      - "443:443"  # Menyediakan akses ke port 443
+      - "443:443"  
     depends_on:
       - app
     networks:
